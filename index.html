@@ -30,26 +30,28 @@
         </form>
         <div class="weather-status text-white text-center">
             <img src="https://openweathermap.org/img/wn/02d@2x.png" alt="">
-            <h1>Dhaka</h1>
-            <h3><span>38.06</span>&deg;C</h3>
+            <h1 >Dhaka</h1>
+            <h3><span>tempUpdate</span>&deg;K</h3>
             <h1 class="lead">Clouds</h1>
         </div>
     </div>
 
 
     <script>
-        document.getElementById("myBtn").addEventListener("click", function(){ console.log(document.getElementById("cityName").value); });
+        document.getElementById("myBtn").addEventListener("click", function(){ 
 
-        // const apiKey = "&appid=5611c9357114c240fc7566b3cf28ad91";
-        // const mainInput = "http://api.openweathermap.org/data/2.5/weather?q="
-        // let cityInput= "Dhaka";
-        // let url = mainInput + cityInput + apiKey;
-        // // // fetch('url')
-        // // console.log(url);
+            cityInput = document.getElementById("cityName").value;
+            const apiKey = "&appid=5611c9357114c240fc7566b3cf28ad91";
+            url = "http://api.openweathermap.org/data/2.5/weather?q=" + cityInput + apiKey;
+            fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                const temp = data.main;
+                var tempUpdate = temp.feels_like;
+            })
+            });
 
-        // fetch('http://api.openweathermap.org/data/2.5/weather?q= + cityInput + apiKey')
-        // .then(response => response.json())
-        // .then(data => console.log(data));
+
           
         
     </script>
